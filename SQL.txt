@@ -1,0 +1,164 @@
+SQL - Structured Query Language
+Linguagem de consulta estruturada
+
+- foi desenvolvida para consultar e realizar operações de inclusão exclusão e criação de estruturas em banco de dados estruturais
+- Sua principal caracteristica é a sua capacidade de fazer junções (unir informações)
+- É uma linguagem amplamente popular
+- É uma linguagem declarativa você diz o que que você quer, diferente do python java etc..
+- Especialmente eficiente para dados normalizados
+
+Quando trabalhamos com dados, dados relacionais, muitos dados
+existem muitas perguntas a serem respondidas o tempo todo, o tempo todo os bancos de dados precisam ser consultados e atualizados
+Um exemplo é um banco de dados de vendas.
+
+TIPOS DE COMANDOS DE SQL
+DQL - Linguagem de consulta de dados - Baseada no select - recupera dados
+DML - Linguagem de Manipulação de dados
+DDL - Linguagem de Definição de Dados
+
+
+DQL - Linguagem de Consulta de dados
+ - Select
+
+DML - Linguagem de Manipulação de Dados
+ - Insert inserir
+ - Update atualizar
+ - Delete deletar
+
+DDL - Linguagem de Definição de Dados - Definição da estruturas de dados
+ CREATE TABLE
+ CREATE INDEX
+ CREATE VIEW
+ ALTER TABLE 
+ ALTER INDEX
+ DROP INDEX
+ DROP VIEW
+
+-----------------------------------------------------------------------------------------------
+DDL E DML:  Linguagem de Definição e Manipulação de dados
+
+Criando uma tabela de clientes
+
+CREATE SEQUENCE IDCliente;
+CREATE TABLE Clientes(
+ IDCliente int default nextval ('IDCliente'::regclass) PRIMARY KEY,
+ Cliente Varchar(50),
+ Estado Varchar(2),
+ Status Varchar(50)
+) ;
+
+INSERINDO DADOS:
+
+INSERT INTO clientes( idcliente, cliente, estado, sexo, status)
+VALUES (251, 'Luan Pinheiro', 'MG', M, 'Silver');
+
+ATUALIZANDO DADOS
+
+UPDATE clientes SET estado='RJ', status='Platinum'
+WHERE idcliente = 251;
+
+DELETAR DADOS
+
+DELETE FROM clients WHERE idcliente = '251'
+
+--------------------------------------------------------------------------------------------
+
+LINGUAGEM DE CONSULTA - SELECT
+
+sempre vai precisar ter o select
+
+select clientes, sexo, status from clientes  -> selecionando as colunas clientes sexo e status de clientes
+
+
+DEFININDO FILTRO: 
+select cliente, sexo, status from clientes where status = 'Silver'  -> retornando apenas clientes que seja silver
+
+OR: (OU)
+status cliente, sexo, status from clientes qhere status = 'Silver' OR status = 'Platinum'
+
+IN:  (DENTRO) operador de conjunto
+select cliente, sexo, status from clientes where status IN ('Silver', 'Platinum')
+
+LIKE: faz uma busca de texto
+select cliente, sexo, status from clientes where cliente like '%Alb%'  - retorne nomes que tem o alb
+
+_ equivale a 1 caractere
+
+
+OPERADORES DE COMPARAÇÃO: ( o * retorna todas as colunas)
+select * from vendas where total > 6000  -> so vai retornar um valor maior que 6000
+
+ORDERNANDO - > ordernar informações
+select cliente from clientes
+order by cliente
+
+select cliente from clientes
+order by client DESC (ordem decrescente)
+
+select cliente, status from clientes
+order by cliente desc, status
+
+BETWEEN -> traga o resultado dentro de um intervalo:
+select * from vendas where total between 6000 and 8000 -> vai mostrar os que estão dntro desse intervalo
+
+TOP: (Não quer que retorne todo o registro)
+select*from VENDAS limit 10  -> limitou a 10 registros retornados
+
+DISTINCT: ( TRAZ INFORMAÇÕES UNICAS, SEM REPETIÇÃO)
+select distinct status from clientes 
+
+
+AGRAGAÇÃO: ( somar todos os valores, ou contar, ou saber o maior/menor valor)
+select count(*) from vendas
+
+min(), max(), AVG(), sum()
+
+AGREGAÇÃO COM WHERE: (contar as vendas cujo total seja maior que)
+select count(*) from vendas where total > 6000
+
+AGRUPANDO: 
+select idvendedor, count(idvendedor)
+from vendas group by idvendedor
+
+HAVING: (como se fose uma condição)
+select idvendedor, count(idvendedor) from vendas group by idvendedor having count(idvendedor) > 40
+
+
+------------------------------------------------------------------------------------------------------
+
+JOINS: Unir dados atavés de PK E FK
+
+TIPOS DE JOINS:
+
+INNER JOIN -> Tras apenas registro das duas tabelas em que a equivalencia entre a chave primaria e a chave estrangeira
+existe uma equivalencia dos dois lados
+
+LEFT JOIN -> Todos os registros da tabela a junto com a tabela b com a equivalencia na chave primaria
+se a for a tabela de clientes eu trago todos os clientes mesmo aqueles que nao fizeram venda ainda
+
+RIGHT JOIN -> Todos os registros da tabela b junto com a tabela a com a equivalencia na chave primaria
+eu vou fazer vendas mesmo que a vendas não tenham clientes
+
+FULL JOIN -> Todos os registros de A e B onde houver equivalencia ou não, vão ocupar a mesmoa linha, todos os registros
+
+
+
+inner join ->
+select count(*) from vendas inner join vendedores on(vendas.idvendedor = vendedores.idvendedro)
+
+LEFT JOIN ->
+select count(*) from vendas left join vendedores on (vendas.idvendedor = vendedores.idvendedor)
+
+RIGHT JOIN ->
+insere novos vendedores
+
+INSERT INTO vendedores(nome) VALUES('Luan Pinheiro');
+select count(*) from vendas right join vendedores on( vendas.idvendedor = vendedores.idvendedor);
+
+"APELIDOS" -> deixa a consulta bem mais simples e didatica
+select client, total from vendas v 
+inner join clientes c on (v.idcliente = c.idcliente)
+
+-----------------------------------------------------------------------------------------
+
+

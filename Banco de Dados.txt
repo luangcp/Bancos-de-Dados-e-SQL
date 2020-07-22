@@ -1,0 +1,91 @@
+Sistemas Gerenciadores de Bancos de Dados:
+
+Dados precisam:
+- Ser armazenados
+- Estar seguros contra ataques, perdas, acesso, etc.
+- Precisam tem integridade, ser real, não sofre mudanças indevidas
+- Constantemente precisam ser Conssultados e Indexados
+- Precisam ser atualizados ou excluidos
+
+SISTEMAS GERENCIADORES DE BANCO DE DADOS:
+SÃO SOFTWARES RESPONSAVEIS POR:
+- manter os dados integros
+- prover acesso a quem de direito
+- permitir rotinas de copia de segurança e restauração
+- Prover mecanismos de replicação/clusterização
+- Otimizar consultas através de indexação
+- Controlar concorrência
+- Permitir atualização/exclusão
+
+EXEMPLOS DE GERENCIADORES DE DADOS:
+- Oracle -> banco de dado relacional
+- MySQL -> banco de dado relacional
+- Microsoft SQL Server -> banco de dado relacional
+- PostgreSQL -> banco de dado relacional
+- MongoDB 
+- IBM Db2
+- Elaticsearch
+Dentre outros..
+
+ESTRUTURAS DE DADOS:
+
+Não estruturados -> São dados livres, produzidos em qualquer estrutura
+- DOCUMENTOS
+- EMAILS
+- VIDEOS
+- POSTAGEM EM REDE SOCIAL
+
+Semi-Estruturados -> Existe uma estrutura prévia, porém é uma estrutura bastante flexivel
+
+exemplo em Json:
+
+{"Funcionarios" : [
+	{ "nome": "Antônio Carlos", "departamento": "TI" }
+	{ "nome": Ana Carolina", "departamento": "RH"}
+	{ "nome": "Matheus Ferraz", "departamento": "Produção" }
+]}
+
+essa estrutura pode ser naturalmente modificada
+
+Dados Estruturados -> Tem uma estrutura fixa, definitiva
+Vantagem: Você prepara todo seu ambiente, sabe o que vai encontrar, Conhece a estrutura
+Desvantagem: Dificil de atualizar e modificar
+
+
+----------------------------------------------------------------
+
+BANCO DE DADOS RELACIONAL -> tem como principal objetivo manter a integridade dos dados
+e reduzir a redudancia
+
+exemplo: vc cadastra um cliente e quer manter os dados deles integros, seu saldo integro (não sofre interferencia)
+a redudancia se refere a uma unica copia/instancia/versão, não pode ter um endereço com versões diferentes no banco de dados
+
+
+FORMAS NORMAIS:
+
+exemplo: sistemas de venda em que vc precisa cadastrar o vendedor, cliente, endereço do cliente, produto, quantidade, valor, total
+
+Os dados não podem conter redundancia. Um mesmo nome se repetir 2 vezes de forma diferente ou com um endereço errado
+Um produto ser contabilizado 2 vezes sendo que so houve uma venda
+
+NORMALIZANDO: Para normalizar dividimos as entidades em tabelas diferentes
+VENDEDOR - CLIENTE/ENDEREÇO - PRODUTO - QUANTIDADE/VALOR/TOTAL
+
+COMO RELACIONAR UMA COISA COM A OUTRA? 
+CHAVES PRIMARIAS -> Identificadores unicos que identificam um objeto em uma tabela. Serão relacionados a codigos
+lembrando que as chaves primarias são unicas
+
+CHAVE ESTRANGEIRAS: Quando vou relacionar dados de entidades exportamos esse registro pra uma outra tabela tendo uma informação unica
+
+O objetivo é criar um Id (codigo/identificador) para cada cliente, vendedor, produto
+assim normalizasse com os id's de cada um
+
+Os identificadores podem ser feitos automaticamente pelo banco de dados ou feito manualmente
+
+Relacionamento muitos para muitos: Uma outra tabela que faz a relação entre as vendas e o produtos
+assim o cliente poderia comprar mais de um produto na mesma venda
+
+
+
+
+
