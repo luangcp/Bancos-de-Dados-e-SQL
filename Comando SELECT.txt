@@ -1,0 +1,28 @@
+COMANDO SELECT:
+Executa uma busca em cima de dados
+
+SELECT coluna1,coluna2  -> PEGA TODAS AS INFORMAÇÕES DESSAS COLUNAS ESPECIFICADAS
+FROM tabela
+
+SELECT *  -> todas as linhas e colunas
+FROM tabela
+
+OS COMANDOS EM SQL SEMPRE DEVEM ESTAR EM MAIUSCULO
+
+Exemplos de pesquisas em tabelas:
+
+SELECT *
+FROM person.person;
+
+SELECT Title -> retorna todos os titulos
+FROM person.person;
+
+SELECT *  -> retorna todos os emails 
+FROM person.EmailAddress
+
+
+NOME E SOBRENOME DE TODOS OS CLIENTES:
+
+SELECT firstName, lastName
+FROM person.person
+

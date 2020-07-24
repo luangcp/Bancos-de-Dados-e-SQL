@@ -1,0 +1,13 @@
+Comando Count -> retorna o numero de linhas de uma condição
+
+SELECT COUNT(*) -> contagem de todas as colunas da tabela
+FROM TABELA
+
+também é possivel
+
+SELECT COUNT(TABELA)
+FROM TABELA
+
+também é possivel 
+SELECT COUNT(DISTINCT coluna1)
+from tabela

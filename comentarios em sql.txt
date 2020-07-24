@@ -1,0 +1,9 @@
+COMO COMENTAR EM SQL
+
+os comentarios são muito importante para o entendimento do codigo 
+
+para comentar em sql tem duas maneiras:
+
+-- com dois traços
+
+/* ou assim */

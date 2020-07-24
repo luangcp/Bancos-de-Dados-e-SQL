@@ -1,0 +1,6 @@
+COMANDO DISTINCT -> Usado para omitir dados duplicados de uma tabela
+
+sintaxe:
+
+SELECT DISTINCT coluna1, coluna2  -> não vai mostrar dados duplicados
+FROM tabela 
